@@ -1,5 +1,5 @@
 package com.Ciclo3.ProyectoArray.controller;
-
+///este controlador es de tipo full controller
 import com.Ciclo3.ProyectoArray.models.Empresa;
 import com.Ciclo3.ProyectoArray.services.EmpresaService;
 import org.springframework.beans.factory.annotation.Autowired;
