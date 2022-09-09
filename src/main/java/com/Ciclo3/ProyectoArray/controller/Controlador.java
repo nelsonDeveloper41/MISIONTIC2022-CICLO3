@@ -1,6 +1,6 @@
 package com.Ciclo3.ProyectoArray.controller;
 ///este controlador es de tipo full controller
-///a partri de este momento modificacmos el fullcontrller por el RESTcontroller
+///hasta aca se trabajo el fullcontroller, mas adelante pasamos a REST
 import com.Ciclo3.ProyectoArray.models.Empresa;
 import com.Ciclo3.ProyectoArray.services.EmpresaService;
 import org.springframework.beans.factory.annotation.Autowired;
