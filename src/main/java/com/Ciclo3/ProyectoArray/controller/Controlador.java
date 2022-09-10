@@ -7,67 +7,53 @@ import com.Ciclo3.ProyectoArray.services.EmpresaService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.util.List;
 
-@Controller
+@RestController
 public class Controlador {
     @Autowired
-    EmpresaService objempServicio;
+    EmpresaService empresaService;
 
-    @GetMapping ({"/","/VerEmpresas"})
-    public String verEmpresas(Model model){
-        List<Empresa> listaEmpresas=objempServicio.listarAllEmpresas();
-        model.addAttribute("empLista", listaEmpresas);
-        return "veoEmpresas"; ///para llamar la vista cargando  la plantilla HTML
+    //EMPRESAS
+    @GetMapping("/enterprises") //Ver json de todas las empresas
+    public List<Empresa> verEmpresas() {
+        return empresaService.listarAllEmpresas();
     }
 
-    @GetMapping("/AgregarEmpresa")
-    public String nuevaEmpresa(Model model){
-        Empresa obj_empresa= new Empresa();
-        model.addAttribute("empNueva",obj_empresa);
-        return "agregarEmpresa"; ///para llamar la vista cargando  la plantilla HTML
+    @PostMapping("/enterprises") //Guardar el json del body como una nueva empresa o registro en nuestra bd
+    public Empresa guardarEmpresa(@RequestBody Empresa emp){
+        return this.empresaService.crearOactualizarEmpresa(emp);
     }
 
-    @PostMapping("/GuardarEmpresa")
-    public String guardarEmpresa(Empresa emp, RedirectAttributes redirectAttributes) {
-        if (objempServicio.crearOactualizarEmpresa(emp) == true) {
-            redirectAttributes.addFlashAttribute("mensaje", "saveOK");
-            return "redirect:/VerEmpresas";
+    @GetMapping(path = "enterprises/{id}")
+    public Empresa empresaPorID(@PathVariable("id") Integer id){
+        return this.empresaService.consultarEmpresaXId(id);
+    }
+
+    @PatchMapping("/enterprises/{id}")
+    public Empresa actualizarEmpresa(@PathVariable("id") Integer id, @RequestBody Empresa empresa) {
+        Empresa emp = empresaService.consultarEmpresaXId(id);
+        emp.setNombre(empresa.getNombre());
+        emp.setDireccion(empresa.getDireccion());
+        emp.setTelefono(empresa.getTelefono());
+        emp.setNIT(empresa.getNIT());
+        return empresaService.crearOactualizarEmpresa(emp);
+    }
+
+
+    @DeleteMapping (path= "enterprises/{id}") //Eliminar registro de la bd
+    public String DeleteEmpresa(@PathVariable("id") Integer id){
+        boolean respuesta= this.empresaService.deleteEmpresa(id);
+        if (respuesta){  //Si respuesta es true?
+            return "Se elimino la empresa con id" +id;
         }
-        redirectAttributes.addFlashAttribute("mensaje", "saveError");
-        return "redirect:/AgregarEmpresa";
-    }
-
-    @GetMapping("/EditarEmpresa/{id}")
-    public String editarEmpresa(Model model, @PathVariable Integer id, @ModelAttribute("mensaje") String mensaje){
-        Empresa emp=objempServicio.consultarEmpresaXId(id);
-        //Creamos un atributo para el modelo, que se llame igualmente emp y es el que ira al html para llenar o alimentar campos
-        model.addAttribute("empeditada",emp);
-        model.addAttribute("mensaje", mensaje);
-        return "editarEmpresa";
-    }
-
-    @PostMapping("/ActualizarEmpresa")
-    public String updateEmpresa(@ModelAttribute("empeditada") Empresa emp){
-        if(objempServicio.crearOactualizarEmpresa(emp)){
-            return "redirect:/VerEmpresas";
+        else{
+            return "No se pudo eliminar la empresa con id"+id;
         }
-        return "redirect:/EditarEmpresa";
     }
 
-    @GetMapping("/EliminarEmpresa/{id}")
-    public String eliminarEmpresa(@PathVariable Integer id){
-        try {
-            objempServicio.borrarEmpresa(id);
-        } catch (Exception e){
-            return "redirect:/VerEmpresas";
-        }
-        return "redirect:/VerEmpresas";
+
     }
-}
