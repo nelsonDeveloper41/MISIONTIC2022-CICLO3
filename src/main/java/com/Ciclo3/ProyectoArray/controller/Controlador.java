@@ -19,6 +19,14 @@ public class Controlador {
     @Autowired
     EmpresaService objempServicio;
 
+
+
+
+    /*
+    INICIO CONTROLLER EMPRESA******************************************************
+    *******************************************************************************
+    *******************************************************************************
+     */
     @GetMapping ({"/","/VerEmpresas"})
     public String verEmpresas(Model model){
         List<Empresa> listaEmpresas=objempServicio.listarAllEmpresas();
@@ -63,10 +71,15 @@ public class Controlador {
     @GetMapping("/EliminarEmpresa/{id}")
     public String eliminarEmpresa(@PathVariable Integer id){
         try {
-            objempServicio.borrarEmpresa(id);
+            objempServicio.deleteEmpresa(id);
         } catch (Exception e){
             return "redirect:/VerEmpresas";
         }
         return "redirect:/VerEmpresas";
     }
+        /*
+    FIN CONTROLLER EMPRESA******************************************************
+    *******************************************************************************
+    *******************************************************************************
+     */
 }
