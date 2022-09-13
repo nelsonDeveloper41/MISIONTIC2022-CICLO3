@@ -2,7 +2,7 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 
     <head>
-        <title>AGREGAR NUEVO EMPLEADO</title>
+        <title>EDITAR DATOS DEL EMPLEADO</title>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -24,10 +24,20 @@
 
     <body>
         <div class="container">
-            <h1>Agregue aqui los datos del nuevo empleado</h1> <!--Titulo -->
+            <h1>Actualice aqui los datos del empleado</h1> <!--Titulo -->
             <br>
             <!--Crear formulario para llenar los datos del empleado y guardarlo en el objeto empl -->
-            <form th:action="@{/GuardarEmpleado}" th:object="${empl}" method="post">
+            <form th:action="@{/ActualizarEmpleado}" th:object="${empl}" method="post">
+
+                <!--Campo para id-->
+                <div class="row">
+                    <div class="form-group col-md-12">
+                        <label class="col-md-3" for="id">ID del Empleado:</label>
+                        <div class="col-md-6">
+                            <input type="text" th:field="*{id}" class="form-control" id="id" required="required" readonly></div>
+                    </div>
+                </div>
+
 
                 <!--Campo para nombre-->
                 <div class="row">
@@ -78,7 +88,7 @@
                 <!--Boton para enviar todo y ejecutar accion -->
                 <div class="row">
                     <div class="col-md-2">
-                        <button class="btn btn-success">Registrar empleado</button>
+                        <button class="btn btn-success">Actualizar datos del empleado</button>
                     </div>
                 </div>
             </form>
