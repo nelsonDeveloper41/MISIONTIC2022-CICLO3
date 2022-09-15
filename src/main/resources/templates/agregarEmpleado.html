@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>Agregar nuevo Empleado - Ciclo3</title>
+    <title>AGREGAR NUEVO USUARIO</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
@@ -20,7 +20,7 @@
 <body>
 
 <div class="container">
-    <h1> Agregue aqui los datos del Empleado</h1>
+    <h1> AGREGUE AQUI LOS DATOS DEL USUARIO</h1>
     <br>
     <!--Crear formulario para llenar los datos de la empresa y guardarlo en el objeto emp -->
     <form th:action="@{/GuardarEmpleado}" th:object="${empl}" method="post">
@@ -71,14 +71,14 @@
         <!--Boton para enviar todo y ejecutar accion -->
         <div class="row">
             <div class="col-md-2">
-                <button class="btn btn-success">Registrar empleado</button>
+                <button class="btn btn-primary">Registrar empleado</button>
             </div>
         </div>
 
     </form>
 
     <br>
-    <a href="javascript: history.go(-1)" class="btn btn-info" role="button">Atrás</a>
+    <a href="javascript: history.go(-1)" class="btn btn-info" role="button">Ir Atrás</a>
 
 </div>
 </body>
