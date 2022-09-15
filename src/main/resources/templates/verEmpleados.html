@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>Lista de Empleados - Ciclo3</title>
+    <title>LISTA DE USUARIOS</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
@@ -22,18 +22,27 @@
 <body>
 
 <div class="container">
-    <h1> Lista de Empleados</h1>
+    <h1> LISTA DE USUARIOS</h1>
+
+
+    <p>Click en la opcion deseada:</p>
+    <div class="btn-group">
+        <button type="button" class="btn btn-primary"><a th:href="@{/AgregarEmpleado}">Agregar Nuevo Empleado</a></button> <!-- vamos a crear un boton que sirva para agregar nuevos empleados -->
+        <button type="button" class="btn btn-info"><a th:href="@{/VerEmpresas}">Ver lista de Empresas</a></button> <!-- boton que me lleva a la lista de empresas -->
+    </div>
+    <br><br>
+
     <!--Dibujamos la tabla-->
     <br><table class="table table-bordered">
     <tr>
         <th>ID</th>
-        <th>Nombre</th>
-        <th>Correo</th>
-        <th>Empresa</th>
-        <th>Rol</th>
-        <th>Movimientos</th>
-        <th>Editar</th>
-        <th>Eliminar</th>
+        <th>NOMBRE</th>
+        <th>CORREO</th>
+        <th>EMPRESA</th>
+        <th>ROL</th>
+        <th class="text-center">MOVIMIENTOS/EMPLEADO</th>
+        <th class="text-center">EDITAR</th>
+        <th class="text-center">ELIMINAR</th>
     </tr>
 
     <!--Llenamos la tabla dibujada-->
@@ -45,17 +54,11 @@
         <td th:text="${empleado.empresa.nombre}"></td>
         <td th:if="${empleado.rol=='1'}">Administrativo</td>
         <td th:if="${empleado.rol=='2'}">Operativo</td>
-        <td><button type="button" class="btn btn-info"><a th:href="@{/Empleado/{id}/Movimientos(id=${empleado.id})}">Ver</a></button></td>
-        <td><button type="button" class="btn btn-warning"><a th:href="@{/EditarEmpleado/{id}(id=${empleado.id})}">Editar</a></button></td>
-        <td><button type="button" class="btn btn-danger"><a th:href="@{/EliminarEmpleado/{id}(id=${empleado.id})}">Eliminar</a></button></td>
+        <td class="text-center"><button type="button" class="btn btn-primary"><a th:href="@{/Empleado/{id}/Movimientos(id=${empleado.id})}">Ver</a></button></td>
+        <td class="text-center"><button type="button" class="btn btn-primary"><a th:href="@{/EditarEmpleado/{id}(id=${empleado.id})}">Editar</a></button></td>
+        <td class="text-center"><button type="button" class="btn btn-danger"><a th:href="@{/EliminarEmpleado/{id}(id=${empleado.id})}">Eliminar</a></button></td>
     </tr>
 </table>
-
-    <!-- vamos a crear un boton que sirva para agregar nuevos empleados -->
-    <button type="button" class="btn btn-info"><a th:href="@{/AgregarEmpleado}">Agregar Nuevo Empleado</a></button>
-    <br><br>
-    <!-- boton que me lleva a la lista de empresas -->
-    <button type="button" class="btn btn-primary"><a th:href="@{/VerEmpresas}">Ver lista de Empresas</a></button>
 </div>
 
 <script th:inline="javascript">

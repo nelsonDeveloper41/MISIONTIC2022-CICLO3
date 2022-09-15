@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>Lista de Movimientos - Ciclo3</title>
+    <title>LISTA DE MOVIMIENTOS</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
@@ -23,17 +23,28 @@
 
 <div class="container">
 
-    <h1> Lista de Movimientos</h1>
+    <h1> LISTA DE MOVIMIENTOS</h1>
+
+
+    <p>Click en la opcion deseada:</p>
+    <div class="btn-group">
+        <button type="button" class="btn btn-primary"><a th:href="@{/AgregarMovimiento}">Agregar Nuevo Movimiento</a></button>   <!-- vamos a crear un boton que sirva para agregar nuevos movimientos -->
+        <button type="button" class="btn btn-info"><a th:href="@{/VerEmpresas}">Ver lista de Empresas</a></button> <!-- boton que me lleva a la lista de empresas -->
+        <button type="button" class="btn btn-primary"><a th:href="@{/VerEmpleados}">Ver lista de Empleados</a></button> <!-- boton que me lleva a la lista de empleados -->
+    </div>
+    <br><br>
+
+
     <!--Dibujamos la tabla-->
     <br><table class="table table-bordered">
     <tr>
         <th>ID</th>
-        <th class="text-right">Valor</th>
-        <th>Concepto</th>
-        <th>Usuario Responsable</th>
-        <th>Fecha del Movimiento</th>
-        <th>Editar</th>
-        <th>Eliminar</th>
+        <th class="text-right">VALOR</th>
+        <th>CONCEPTO</th>
+        <th>USUARIO QUE REGISTRA</th>
+        <th>FECHA DEL REGISTRO</th>
+        <th class="text-center">EDITAR</th>
+        <th class="text-center">ELIMINAR</th>
     </tr>
 
     <!--Llenamos la tabla dibujada-->
@@ -51,8 +62,8 @@
         <td th:if="${movimiento.concepto=='8'}">Nomina</td>
         <td th:text="${movimiento.usuario.nombre}"></td>
         <td th:text="${#dates.format(movimiento.fecha, 'dd/MM/yyyy')}"></td>
-        <td><button type="button" class="btn btn-warning"><a th:href="@{/EditarMovimiento/{id}(id=${movimiento.id})}">Editar</a></button></td>
-        <td><button type="button" class="btn btn-danger"><a th:href="@{/EliminarMovimiento/{id}(id=${movimiento.id})}">Eliminar</a></button></td>
+        <td class="text-center"><button type="button" class="btn btn-primary"><a th:href="@{/EditarMovimiento/{id}(id=${movimiento.id})}">Editar</a></button></td>
+        <td class="text-center"><button type="button" class="btn btn-danger"><a th:href="@{/EliminarMovimiento/{id}(id=${movimiento.id})}">Eliminar</a></button></td>
     </tr>
 </table>
 
@@ -77,14 +88,6 @@
         </div>
     </div>
 
-    <!-- vamos a crear un boton que sirva para agregar nuevos movimientos -->
-    <button type="button" class="btn btn-info"><a th:href="@{/AgregarMovimiento}">Agregar Nuevo Movimiento</a></button>
-    <br><br>
-    <!-- boton que me lleva a la lista de empresas -->
-    <button type="button" class="btn btn-primary"><a th:href="@{/VerEmpresas}">Ver lista de Empresas</a></button>
-    <br><br>
-    <!-- boton que me lleva a la lista de empleados -->
-    <button type="button" class="btn btn-primary"><a th:href="@{/VerEmpleados}">Ver lista de Empleados</a></button>
 </div>
 
 <script th:inline="javascript">
