@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
  */
 @SpringBootApplication(exclude = {SecurityAutoConfiguration.class})
 public class ProyectoArrayApplication {
-
+//SE VA A IMPLEMENTAR PROTOCOLOS DE SEGURIDAD Y RESTRICCIONES DE ACCESO USER-ADMIN
 	/*
 
 	@GetMapping("/hello")
