@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
  */
 @SpringBootApplication(exclude = {SecurityAutoConfiguration.class})
 public class ProyectoArrayApplication {
-
+//HASTA ESTE PUNTO NO SE HA IMPLEMETADO SEGURIDAD
 	/*
 
 	@GetMapping("/hello")
