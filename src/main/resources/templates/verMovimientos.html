@@ -91,9 +91,19 @@
     <!-- Campo para ver la suma de TODOS LOS MOVIMIENTOS FILTRADOS -->
     <div class="row">
         <div class="form-group col-md-12">
-            <label class="col-md-3" for="SumaMontos">Total Movimientos:</label>
+            <label class="col-md-2" for="SumaMontos">Total Movimientos:</label>
             <div class="col-md-6">
                 <p th:text="${#numbers.formatCurrency(SumaMontos)}" class="form-control" id="SumaMontos"></p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Campo para ver si el total es de todas las empresas, por una empresa o por un empleado -->
+    <div class="row">
+        <div class="form-group col-md-12">
+            <label class="col-md-2" for="Texto">REFERENCIA:</label>
+            <div class="col-md-6">
+                <p th:text="${Texto}" class="form-control" id="Texto"></p>
             </div>
         </div>
     </div>

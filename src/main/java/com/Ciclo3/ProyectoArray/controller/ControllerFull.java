@@ -31,7 +31,7 @@ public class ControllerFull {
     @Autowired
     MovimientosRepository movimientosRepositor;
 
-    //EMPRESAS
+    //EMPRESAS***************************************************************************
     @GetMapping ({"/","/VerEmpresas"})
     public String viewEmpresas(Model model, @ModelAttribute("mensaje") String mensaje){
         List<Empresa> listaEmpresas=empresaService.getAllEmpresas();
@@ -91,7 +91,7 @@ public class ControllerFull {
 
 
 
-    //EMPLEADOS
+    //EMPLEADOS***************************************************************************************
     @GetMapping ("/VerEmpleados")
     public String viewEmpleados(Model model, @ModelAttribute("mensaje") String mensaje){
         List<Empleado> listaEmpleados=empleadoService.getAllEmpleado();
@@ -173,6 +173,8 @@ public class ControllerFull {
         model.addAttribute("mensaje",mensaje);
         Long sumaMonto=movimientosService.obtenerSumaMontos();
         model.addAttribute("SumaMontos",sumaMonto);//Mandamos la suma de todos los montos a la plantilla
+        String texto="TOTAL DE TODAS LAS EMPRESAS";
+        model.addAttribute("Texto",texto);
         return "verMovimientos"; //Llamamos al HTML
     }
 
@@ -234,6 +236,10 @@ public class ControllerFull {
         model.addAttribute("movlist",movlist);
         Long sumaMonto=movimientosService.MontosPorEmpleado(id);
         model.addAttribute("SumaMontos",sumaMonto);
+        Empleado empl=empleadoService.getEmpleadoById(id).get();
+        String nombreEmpleado = empl.getNombre();
+        String texto="TOTAL POR EL EMPLEADO "+nombreEmpleado;
+        model.addAttribute("Texto",texto);
         return "verMovimientos"; //Llamamos al HTML
     }
 
@@ -243,6 +249,10 @@ public class ControllerFull {
         model.addAttribute("movlist",movlist);
         Long sumaMonto=movimientosService.MontosPorEmpresa(id);
         model.addAttribute("SumaMontos",sumaMonto);
+        Empresa emp=empresaService.getEmpresaById(id);
+        String nombreEmpresa = emp.getNombre();
+        String texto="TOTAL POR LA EMPRESA "+ nombreEmpresa;
+        model.addAttribute("Texto",texto);
         return "verMovimientos"; //Llamamos al HTML
     }
 }

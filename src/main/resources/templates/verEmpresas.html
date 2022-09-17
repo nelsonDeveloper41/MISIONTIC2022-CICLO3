@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
+    <link rel="stylesheet" type="text/css" href="estilosFondo.css">
     <title>LISTA DE EMPRESAS</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -29,6 +30,21 @@
     text-decoration:none;
     }
 </style>
+    </style>
+    <!--estilo imagen de fondo-->
+    <style>
+body{
+    margin: 0;
+    padding: 0;
+    background: url(fondoEmpresas.jpg);
+    background-size: cover;
+    background-position: center;
+    font-family: sans-serif;
+}
+</style>
+
+
+
 </head>
 <body>
 
@@ -40,6 +56,7 @@
     <div class="btn-group">
         <button type="button" class="btn btn-primary"><a th:href="@{/AgregarEmpresa}">Agregar Nueva Empresa</a></button>
         <button type="button" class="btn btn-info"><a th:href="@{/VerEmpleados}">Ver lista de Empleados</a></button>
+        <button type="button" class="btn btn-primary"><a th:href="@{/VerMovimientos}">Ver lista Movimientos Empresas</a></button>
     </div>
     <br><br>
 
@@ -103,6 +120,5 @@
     }
 
 </script>
-
 </body>
 </html>
