@@ -10,8 +10,11 @@ import com.Ciclo3.ProyectoArray.services.EmpleadoService;
 import com.Ciclo3.ProyectoArray.services.EmpresaService;
 import com.Ciclo3.ProyectoArray.services.MovimientosService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Bean;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -254,5 +257,13 @@ public class ControllerFull {
         String texto="TOTAL POR LA EMPRESA "+ nombreEmpresa;
         model.addAttribute("Texto",texto);
         return "verMovimientos"; //Llamamos al HTML
+    }
+
+    //METODOS DE SEGURIDAD
+
+    //Metodo para encriptar contraseñas
+    @Bean
+    public PasswordEncoder passwordEncoder(){
+        return new BCryptPasswordEncoder();
     }
 }

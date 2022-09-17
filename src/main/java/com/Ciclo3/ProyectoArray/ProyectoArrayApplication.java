@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 
  */
-@SpringBootApplication(exclude = {SecurityAutoConfiguration.class})
+@SpringBootApplication //(exclude = {SecurityAutoConfiguration.class}) solo se necesitaba al inicio del desarrollo
 public class ProyectoArrayApplication {
 //SE VA A IMPLEMENTAR PROTOCOLOS DE SEGURIDAD Y RESTRICCIONES DE ACCESO USER-ADMIN
 	/*
