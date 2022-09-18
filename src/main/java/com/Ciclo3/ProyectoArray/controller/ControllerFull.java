@@ -139,16 +139,18 @@ public class ControllerFull {
 
     @PostMapping("/ActualizarEmpleado")
     public String updateEmpleado(@ModelAttribute("empl") Empleado empl, RedirectAttributes redirectAttributes){
-        String passEncriptada=passwordEncoder().encode(empl.getPassword());///metodo para encriptar contraseña
-        empl.setPassword(passEncriptada);                                  ///metodo para sobreescribir la original por la encriptada
-
+        Integer id=empl.getId(); //Sacamos el id del objeto empl
+        String Oldpass=empleadoService.getEmpleadoById(id).get().getPassword(); //Con ese id consultamos la contraseña que ya esta en la base
+        if(!empl.getPassword().equals(Oldpass)){
+            String passEncriptada=passwordEncoder().encode(empl.getPassword());//se encrypta
+            empl.setPassword(passEncriptada);                                   //se sobreescribe
+        }
         if(empleadoService.saveOrUpdateEmpleado(empl)){
             redirectAttributes.addFlashAttribute("mensaje","updateOK");
             return "redirect:/VerEmpleados";
         }
         redirectAttributes.addFlashAttribute("mensaje","updateError");
         return "redirect:/EditarEmpleado/"+empl.getId();
-
     }
 
     @GetMapping("/EliminarEmpleado/{id}")
