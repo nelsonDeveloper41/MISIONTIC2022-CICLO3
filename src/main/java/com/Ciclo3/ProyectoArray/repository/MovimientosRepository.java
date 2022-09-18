@@ -28,4 +28,6 @@ public interface MovimientosRepository extends JpaRepository<MovimientoDinero, I
     //Metodo para ver la suma de los movimientos por empresa
     @Query(value="select sum(monto) from movimientos where empleado_id in (select id from empleado where empresa_id= ?1)", nativeQuery = true)
     public abstract Long MontosPorEmpresa(Integer id); //Id de la empresa
+
+
 }

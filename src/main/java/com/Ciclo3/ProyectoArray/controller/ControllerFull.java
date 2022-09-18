@@ -269,6 +269,14 @@ public class ControllerFull {
 
     //METODOS DE SEGURIDAD
 
+
+
+    //Controlador que me lleva al template de No autorizado
+    @RequestMapping(value="/Denegado")
+    public String accesoDenegado(){
+        return "accessDenied";
+    }
+
     //Metodo para encriptar contraseñas
     @Bean
     public PasswordEncoder passwordEncoder(){

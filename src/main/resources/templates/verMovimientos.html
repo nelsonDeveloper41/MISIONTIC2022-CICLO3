@@ -32,9 +32,10 @@
 <body>
 
 <div class="container">
-
-    <h1> LISTA DE MOVIMIENTOS</h1>
+    <p th:inline="text" class="text-right">User: [[${#httpServletRequest.remoteUser}]]</p>
     <button type="button" class="btn btn-danger" style="float:right"><a th:href="@{/logout}">Cerrar Sesión</a></button>
+    <h1> LISTA DE MOVIMIENTOS</h1>
+
 
 
     <p>Click en la opcion deseada:</p>
