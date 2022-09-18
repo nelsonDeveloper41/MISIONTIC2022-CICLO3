@@ -29,17 +29,34 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .authoritiesByUsernameQuery("select correo, rol from empleado where correo=?");
     }
 
-
+///Permisos y restricciones de acceso
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests()
                 .antMatchers("/","VerEmpresas/**").hasRole("ADMIN")
+                .antMatchers("/AgregarEmpresa/**").hasRole("ADMIN")
+                .antMatchers("/GuardarEmpresa/**").hasRole("ADMIN")
+                .antMatchers("/EditarEmpresa/**").hasRole("ADMIN")
+                .antMatchers("/ActualizarEmpresa/**").hasRole("ADMIN")
+                .antMatchers("/EliminarEmpresa/**").hasRole("ADMIN")
                 .antMatchers("/VerEmpleados/**").hasRole("ADMIN")
+                .antMatchers("/AgregarEmpleado/**").hasRole("ADMIN")
+                .antMatchers("/GuardarEmpleado/**").hasRole("ADMIN")
+                .antMatchers("/EditarEmpleado/**").hasRole("ADMIN")
+                .antMatchers("/ActualizarEmpleado/**").hasRole("ADMIN")
+                .antMatchers("/EliminarEmpleado/**").hasRole("ADMIN")
+                .antMatchers("/EliminarEmpleado/**").hasRole("ADMIN")
+                .antMatchers("/VerMovimientos/**").hasRole("ADMIN")
+                .antMatchers("/EditarMovimiento/**").hasRole("ADMIN")
+                .antMatchers("/ActualizarMovimiento/**").hasRole("ADMIN")
+                .antMatchers("/EliminarMovimiento/**").hasRole("ADMIN")
+
+
                 .antMatchers("/Empresa/**").hasRole("ADMIN")
                 .antMatchers("/Empleado/**").hasRole("ADMIN")
-                .antMatchers("/VerMovimiento/**").hasAnyRole("ADMIN","USER")
-                .antMatchers("/AgregarMovimiento/**").hasAnyRole("ADMIN","USER")
-                .antMatchers("/EditarMovimiento/**").hasAnyRole("ADMIN","USER")
+
+                .antMatchers("/AgregarMovimiento").hasAnyRole("ADMIN","USER")
+
                 .and().formLogin().successHandler(customSuccessHandler)
                 .and().exceptionHandling().accessDeniedPage("/Denegado")
                 .and().logout().permitAll();
