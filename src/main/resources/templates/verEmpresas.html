@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <link rel="stylesheet" type="text/css" href="estilosFondo.css">
+    <!--link rel="stylesheet" type="text/css" href="css/estilosFondo.css"-->
     <title>LISTA DE EMPRESAS</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -36,10 +36,11 @@
 body{
     margin: 0;
     padding: 0;
-    background: url(fondoEmpresas.jpg);
+    background: url(images/fondoEmpresas.jpg);
     background-size: cover;
     background-position: center;
     font-family: sans-serif;
+    background-attachment: fixed;
 }
 </style>
 
@@ -47,18 +48,31 @@ body{
 
 </head>
 <body>
+    <header style="background-color: rgb(62, 128, 191);">
+        <div class="container">
+            <div id="contenido1" style="float:left">
+                <h1 style="color:white ;">CONTABILIDAD-LISTA DE EMPRESAS</h1>
+            </div>
+            <div id="contenido1" style="float:right">
+                <h3 th:inline="text" class="text-right" style="color:white ;">User: [[${#httpServletRequest.remoteUser}]]</h3>
+                <button type="button" class="btn btn-danger" style="float:right">
+                    <a th:href="@{/logout}">Cerrar Sesión</a>
+                </button>
+            </div>
+        </div>
+        <br>
+    </header>
 
 <div class="container">
-    <p th:inline="text" class="text-right">User: [[${#httpServletRequest.remoteUser}]]</p>
-    <button type="button" class="btn btn-danger" style="float:right"><a th:href="@{/logout}">Cerrar Sesión</a></button>
-    <h1> LISTA DE EMPRESAS</h1>
+
 
     <!-- vamos a crear 2 botones agrupados para agregar nuevas empresas y para ir a la lista de empleados -->
+    <br>
     <p>Click en la opcion deseada:</p>
     <div class="btn-group">
         <button type="button" class="btn btn-primary"><a th:href="@{/AgregarEmpresa}">Agregar Nueva Empresa</a></button>
-        <button type="button" class="btn btn-info"><a th:href="@{/VerEmpleados}">Ver lista de Empleados</a></button>
-        <button type="button" class="btn btn-primary"><a th:href="@{/VerMovimientos}">Ver lista Movimientos Empresas</a></button>
+        <button type="button" class="btn btn-info"><a th:href="@{/HomePage}">IR AL INICIO</a></button>
+        <button type="button" class="btn btn-primary"><a href="javascript: history.go(-1)" >IR ATRAS</a></button>
     </div>
     <br><br>
 

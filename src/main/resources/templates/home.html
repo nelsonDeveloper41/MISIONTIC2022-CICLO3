@@ -1,107 +1,58 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
 <head>
-  <title>EDITAR EMPRESA</title>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-  <style>
-    a{
-    color:white;
-    }
-    a:hover {
-    color: black;
-    text-decoration:none;
-    }
-</style>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LOGIN</title>
+    <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-  <header style="background-color: rgb(62, 128, 191);">
-    <div class="container">
-      <div style="float:left">
-        <h1 style="color:white ;">EDITAR DATOS EMPRESA</h1>
-      </div>
-      <div style="float:right">
-        <h3 th:inline="text" class="text-right" style="color:white ;">User: [[${#httpServletRequest.remoteUser}]]</h3>
-        <button type="button" class="btn btn-danger" style="float:right">
-          <a th:href="@{/logout}">Cerrar Sesión</a>
-        </button>
-      </div>
-    </div>
-    <br>
-  </header>
 
-<div class="container">
-
-  <br><br><br>
-  <!--Crear formulario para llenar los datos de la empresa y guardarlo en el objeto emp -->
-  <form th:action="@{/ActualizarEmpresa}" th:object="${emp}" method="post">
-
-    <!--Campo para id-->
-    <div class="row">
-      <div class="form-group col-md-12">
-        <label class="col-md-3" for="id">ID de la Empresa:</label>
-        <div class="col-md-6">
-          <input type="text" th:field="*{id}" class="form-control" id="id" required="required" readonly></div>
-      </div>
-    </div>
-
-
-
-    <!--Campo para nombre-->
-    <div class="row">
-      <div class="form-group col-md-12">
-        <label class="col-md-3" for="nombre">Nombre de la Empresa:</label>
-        <div class="col-md-6">
-          <input type="text" th:field="*{nombre}" class="form-control" id="nombre" required="required"></div>
-      </div>
-    </div>
-
-    <!--Campo para direccion-->
-    <div class="row">
-      <div class="form-group col-md-12">
-        <label class="col-md-3" for="direccion">Direccion de la Empresa:</label>
-        <div class="col-md-6">
-          <input type="text" th:field="*{direccion}" class="form-control" id="direccion" required="required"></div>
-      </div>
-    </div>
-
-    <!--Campo para telefono-->
-    <div class="row">
-      <div class="form-group col-md-12">
-        <label class="col-md-3" for="telefono">Telefono de la Empresa:</label>
-        <div class="col-md-6">
-          <input type="text" th:field="*{telefono}" class="form-control" id="telefono" required="required"></div>
-      </div>
-    </div>
-
-    <!--Campo para NIT-->
-    <div class="row">
-      <div class="form-group col-md-12">
-        <label class="col-md-3" for="NIT">NIT o RUT de la Empresa:</label>
-        <div class="col-md-6">
-          <input type="text" th:field="*{NIT}" class="form-control" id="NIT" required="required"></div>
-      </div>
-    </div>
-
-
-    <!--Boton para enviar todo y ejecutar accion -->
-    <div class="row">
-      <div class="col-md-2">
-        <button class="btn btn-success">Actualizar Empresa</button>
-      </div>
-    </div>
-
-  </form>
-
-  <br>
-  <a href="javascript: history.go(-1)" class="btn btn-info" role="button">Atrás</a>
-
+<div>
+    <h3 th:inline="text" class="text-right" style="color:white;">User: [[${#httpServletRequest.remoteUser}]]</h3>
 </div>
 
-<style>
+
+    <section class="form-main">
+        <div class="form-content">
+            <div class="circle-1"></div>
+            <div class="circle-2"></div>
+            <div class="circle-3"></div>
+            <div class="box">
+                <h3>Bienvenido a la pagina de Inicio de Gestión Contable </h3>
+                <form >
+                    <br>
+                    <div>
+                        <button  type="submit" class="btn"><a style="color:white ;" th:href="@{/AgregarMovimiento}">REGISTRAR UN MOVIMIENTO</a></button>
+                    </div>
+                    <br>
+                    <div>
+                        <button sec:authorize="hasRole('ADMIN')" type="submit" class="btn"><a style="color:white ;" th:href="@{/VerEmpresas}">IR A LISTA DE EMPRESAS</a></button>
+                    </div>
+                    <br>
+                    <div>
+                        <button type="submit" class="btn"><a style="color:white ;" th:href="@{/VerEmpleados}">IR A LISTA DE EMPLEADOS</a></button>
+                    </div>
+                    <br>
+                    <div>
+                        <button type="submit" class="btn"><a style="color:white ;" th:href="@{/VerMovimientos}">IR A LISTA DE MOVIMIENTOS</a></button>
+                    </div>
+                    <br>
+                    <div>
+                        <button type="submit" class="btn btn-danger"><a style="color:red ;" th:href="@{/logout}">CERRAR SESION</a></button>
+                    </div>
+
+
+                </form>
+            </div>
+        </div>
+    </section>
+
+
+
+    <style>
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
 
 :root{

@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
 <head>
     <title>LISTA DE MOVIMIENTOS</title>
     <meta charset="utf-8">
@@ -30,21 +31,47 @@
 </style>
 </head>
 <body>
+    <header style="background-color: rgb(62, 128, 191);">
+        <div class="container">
+            <div style="float:left">
+                <h1 style="color:white ;">CONTABILIDAD-LISTA DE MOVIMIENTOS</h1>
+            </div>
+            <div style="float:right">
+                <h3 th:inline="text" class="text-right" style="color:white ;">User: [[${#httpServletRequest.remoteUser}]]</h3>
+                <button type="button" class="btn btn-danger" style="float:right">
+                    <a th:href="@{/logout}">Cerrar Sesión</a>
+                </button>
+            </div>
+        </div>
+        <br>
+    </header>
 
-<div class="container">
-    <p th:inline="text" class="text-right">User: [[${#httpServletRequest.remoteUser}]]</p>
-    <button type="button" class="btn btn-danger" style="float:right"><a th:href="@{/logout}">Cerrar Sesión</a></button>
-    <h1> LISTA DE MOVIMIENTOS</h1>
 
 
+    <br>
 
-    <p>Click en la opcion deseada:</p>
-    <div class="btn-group">
-        <button type="button" class="btn btn-primary"><a th:href="@{/AgregarMovimiento}">Agregar Nuevo Movimiento</a></button>   <!-- vamos a crear un boton que sirva para agregar nuevos movimientos -->
-        <button type="button" class="btn btn-info"><a th:href="@{/VerEmpresas}">Ver lista de Empresas</a></button> <!-- boton que me lleva a la lista de empresas -->
-        <button type="button" class="btn btn-primary"><a th:href="@{/VerEmpleados}">Ver lista de Empleados</a></button> <!-- boton que me lleva a la lista de empleados -->
-    </div>
-    <br><br>
+    <div class="container">
+        <p>Click en la opcion deseada:</p>
+            <div class="btn-group" style="float:left">
+                <button type="button" class="btn btn-primary"><a th:href="@{/AgregarMovimiento}">Agregar Nuevo Movimiento</a></button>   <!-- vamos a crear un boton que sirva para agregar nuevos movimientos -->
+                <button type="button" class="btn btn-info"><a th:href="@{/HomePage}">IR AL INICIO</a></button> <!-- boton que me lleva a la lista de empleados -->
+                <button type="button" class="btn btn-primary"><a href="javascript: history.go(-1)" >IR ATRAS</a></button>
+            </div>
+
+
+        <div style="float:right">
+            <!-- CAMPO PARA EL AREA DE NAVEGACION por paginas -->
+            <nav aria-label="Ejemplo navegacion">
+                <ul class="pagination mt-4">
+                    <li th:class="${paginaActual==estado.index} ? 'active' : '' " th:each="pagina, estado: ${paginas}" class="page-item">
+                        <a th:href="@{/VerMovimientos/(pagina=${estado.index})}" class="page-link" th:text="${estado.index}+1"></a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+        <br><br>
+
+
 
 
     <!--Dibujamos la tabla-->
@@ -78,16 +105,6 @@
         <td class="text-center"><button type="button" class="btn btn-danger"><a th:href="@{/EliminarMovimiento/{id}(id=${movimiento.id})}">Eliminar</a></button></td>
     </tr>
 </table>
-
-    <!-- CAMPO PARA EL AREA DE NAVEGACION -->
-    <nav aria-label="Ejemplo navegacion">
-        <ul class="pagination mt-4">
-            <li th:class="${paginaActual==estado.index} ? 'active' : '' " th:each="pagina, estado: ${paginas}" class="page-item">
-                <a th:href="@{/VerMovimientos/(pagina=${estado.index})}" class="page-link" th:text="${estado.index}+1"></a>
-            </li>
-        </ul>
-    </nav>
-
 
 
     <!-- Campo para ver la suma de TODOS LOS MOVIMIENTOS FILTRADOS -->
@@ -139,6 +156,5 @@
     }
 
 </script>
-
 </body>
 </html>

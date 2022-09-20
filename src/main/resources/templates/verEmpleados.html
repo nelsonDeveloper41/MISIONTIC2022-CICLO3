@@ -28,19 +28,32 @@
     text-decoration:none;
     }
 </style>
+
 </head>
 <body>
+    <header style="background-color: rgb(62, 128, 191);">
+        <div class="container">
+            <div style="float:left">
+                <h1 style="color:white ;">CONTABILIDAD-LISTA DE EMPLEADOS</h1>
+            </div>
+            <div style="float:right">
+                <h3 th:inline="text" class="text-right" style="color:white ;">User: [[${#httpServletRequest.remoteUser}]]</h3>
+                <button type="button" class="btn btn-danger" style="float:right">
+                    <a th:href="@{/logout}">Cerrar Sesión</a>
+                </button>
+            </div>
+        </div>
+        <br>
+    </header>
 
 <div class="container">
-    <p th:inline="text" class="text-right">User: [[${#httpServletRequest.remoteUser}]]</p>
-    <button type="button" class="btn btn-danger" style="float:right"><a th:href="@{/logout}">Cerrar Sesión</a></button>
-    <h1> LISTA DE USUARIOS</h1>
 
-
+    <br>
     <p>Click en la opcion deseada:</p>
     <div class="btn-group">
         <button type="button" class="btn btn-primary"><a th:href="@{/AgregarEmpleado}">Agregar Nuevo Empleado</a></button> <!-- vamos a crear un boton que sirva para agregar nuevos empleados -->
-        <button type="button" class="btn btn-info"><a th:href="@{/VerEmpresas}">Ver lista de Empresas</a></button> <!-- boton que me lleva a la lista de empresas -->
+        <button type="button" class="btn btn-info"><a th:href="@{/HomePage}">IR AL INICIO</a></button> <!-- boton que me lleva a la lista de empresas -->
+        <button type="button" class="btn btn-primary"><a href="javascript: history.go(-1)" >IR ATRAS</a></button>
     </div>
     <br><br>
 
@@ -103,7 +116,6 @@
     }
 
 </script>
-
 </body>
 </html>
 

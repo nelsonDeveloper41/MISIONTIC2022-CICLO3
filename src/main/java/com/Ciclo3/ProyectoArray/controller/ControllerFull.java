@@ -208,7 +208,7 @@ public class ControllerFull {
     public String guardarMovimiento(MovimientoDinero mov, RedirectAttributes redirectAttributes){
         if(movimientosService.saveOrUpdateMovimiento(mov)){
             redirectAttributes.addFlashAttribute("mensaje","saveOK");
-            return "redirect:/VerMovimientos";
+            return "redirect:/AgregarMovimiento";
         }
         redirectAttributes.addFlashAttribute("mensaje","saveError");
         return "redirect:/AgregarMovimiento";
@@ -282,9 +282,19 @@ public class ControllerFull {
         return "accessDenied";
     }
 
+
     //Metodo para encriptar contraseñas
     @Bean
     public PasswordEncoder passwordEncoder(){
         return new BCryptPasswordEncoder();
     }
+
+
+
+    ///CONTROLADOR QUE ME LLEVA A LA PAGINA DE INICIO
+    @RequestMapping(value="/HomePage")
+    public String accesHomePage(){
+        return "home";
+    }
+
 }

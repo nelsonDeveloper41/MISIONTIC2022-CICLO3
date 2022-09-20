@@ -1,0 +1,10 @@
+body {
+  height: 800px;
+  background-image: url("images/fondoEmpresas.jpg");
+  background-size: cover;
+  background-size: 25rem;
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-attachment: fixed;
+}
+
