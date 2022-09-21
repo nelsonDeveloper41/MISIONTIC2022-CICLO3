@@ -66,4 +66,4 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .and().logout().permitAll();
     }
 }
-//pendiente agregar mas restricciones
+//iniciamos configuracion de la pagina de login
