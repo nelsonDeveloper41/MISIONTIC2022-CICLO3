@@ -68,3 +68,4 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     }
 }
 //iniciamos configuracion de la pagina de login
+//terminamos configuracion de la pagina de login
