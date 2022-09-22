@@ -61,7 +61,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/HomePage").hasAnyRole("ADMIN","USER")
 
 
-                .and().formLogin().successHandler(customSuccessHandler)
+                .and().formLogin().loginPage("/miFormulariologin").successHandler(customSuccessHandler)
+                .loginProcessingUrl("/autenticacionUsuario")
                 .and().exceptionHandling().accessDeniedPage("/Denegado")
                 .and().logout().permitAll();
     }

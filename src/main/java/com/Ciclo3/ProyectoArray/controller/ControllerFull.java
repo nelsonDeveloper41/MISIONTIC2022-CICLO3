@@ -289,6 +289,12 @@ public class ControllerFull {
         return new BCryptPasswordEncoder();
     }
 
+    ///CONTROLADOR QUE ME LLEVA A LA PAGINA DE login
+    @RequestMapping(value="/miFormulariologin")
+    public String loginPage(){
+        return "loginPage";
+    }
+
 
 
     ///CONTROLADOR QUE ME LLEVA A LA PAGINA DE INICIO
