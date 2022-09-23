@@ -33,7 +33,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests()
-                .antMatchers("/","VerEmpresas/**").hasRole("ADMIN")
+                .antMatchers("/","/VerEmpresas/**").hasRole("ADMIN")
                 .antMatchers("/AgregarEmpresa/**").hasRole("ADMIN")
                 .antMatchers("/GuardarEmpresa/**").hasRole("ADMIN")
                 .antMatchers("/EditarEmpresa/**").hasRole("ADMIN")
@@ -64,7 +64,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .and().formLogin().loginPage("/miFormulariologin").successHandler(customSuccessHandler)
                 .loginProcessingUrl("/autenticacionUsuario")
                 .and().exceptionHandling().accessDeniedPage("/Denegado")
-                .and().logout().permitAll();
+                .and().logout().logoutUrl("/logout").permitAll();
     }
 }
 //iniciamos configuracion de la pagina de login

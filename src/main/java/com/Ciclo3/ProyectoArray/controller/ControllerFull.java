@@ -303,4 +303,10 @@ public class ControllerFull {
         return "home";
     }
 
+    ///CONTROLADOR QUE ME LLEVA A LA PAGINA DESPUES DE CERRAR CESION
+    @RequestMapping(value="/logoutPage")
+    public String salirdeSesion(){
+        return "logoutPageView";
+    }
+
 }

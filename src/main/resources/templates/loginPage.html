@@ -6,6 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>LOGIN</title>
     <link rel="stylesheet" href="css/style.css">
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
+    <link href="https://getbootstrap.com/docs/4.0/examples/signin/signin.css" rel="stylesheet" crossorigin="anonymous">
 </head>
 <body>
     <section class="form-main">
@@ -14,8 +16,31 @@
             <div class="circle-2"></div>
             <div class="circle-3"></div>
             <div class="box">
-                <h3>Bienvenido a Gestión Contable </h3>
+
+                <h3>Bienvenido a Gestión Contable</h3>
+                <h4 class="text-center">Por favor ingrese sus credenciales</h4>
+                <!----------------------------------------------------------------------------------->
+                <!----------avisos flotantes clave incorrecta o cierre exitoso de sesion------------->
+                <!----------------------------------------------------------------------------------->
+                <div th:if="${param.error}">
+                    <div class="alert alert-danger alert-dismissible fade show"
+                         role="alert">
+                        Username o password inválidos
+                    </div>
+                </div>
+
+                <div th:if="${param.logout}">
+                    <div class="alert alert-primary alert-dismissible fade show"
+                         role="alert">
+                        Ha cerrado sesión exitosamente
+                    </div>
+                </div>
+                <!----------------------------------------------------------------------------------->
+                <!----------------------------------------------------------------------------------->
+                <!----------------------------------------------------------------------------------->
+
                 <form  method="post" th:action="@{/autenticacionUsuario}">
+
                     <div class="input-box">
                         <input id="username" type="text" name="username" placeholder="Email" class="input-control" required="" autofocus="">
                     </div>
@@ -135,17 +160,17 @@ a{
 }
 
 .form-content .circle-2{
-    height: 80px;
-    width: 80px;
-    right: 0;
+    height: 100px;
+    width: 100px;
+    right: -5%;
     bottom: 0%;
     transform: translate(20%, 20%);
 }
 
 .form-content .circle-3{
-    height: 60px;
-    width: 60px;
-    right: 0;
+    height: 70px;
+    width: 70px;
+    right: -2%;
     top: 10%;
 }
 

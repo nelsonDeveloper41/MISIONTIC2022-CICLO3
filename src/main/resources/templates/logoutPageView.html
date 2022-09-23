@@ -1,33 +1,33 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>LOGIN</title>
+    <title>LOGOUT</title>
     <link rel="stylesheet" href="css/style.css">
+
 </head>
 <body>
-<div class="container">
-    <form class="form-signin" method="post" th:action="@{/autenticacionUsuario}">
-        <h2 class="form-signin-heading">Please sign in</h2>
-        <p>
-            <label class="sr-only" for="username">Username</label>
-            <input id="username" class="form-control" type="text" name="username" placeholder="Username" required="" autofocus="">
+<section class="form-main">
+    <div class="form-content">
+        <div class="circle-1"></div>
+        <div class="circle-2"></div>
+        <div class="circle-3"></div>
+        <div class="box">
+            <h3>GRACIAS POR SU VISITA</h3>
+            <br>
+            <form  method="post" th:action="@{/logout}">
+                <h3>ESTA SEGURO DE CERRAR SESION?</h3>
+                <button type="submit" class="btn">CERRAR SESION</button>
+            </form>
 
-        </p>
+        </div>
+    </div>
+</section>
 
-        <p>
-            <label class="sr-only" for="password">Password</label>
-            <input id="password" class="form-control" type="password" name="password" placeholder="Password" required="">
-        </p>
-        <input name="_csrf" type="hidden" value="a1567ff1-1e9a-4543-b308-261d215d5efa">
-        <button class="btn- btn-lg btn-primary btn-block" type="submit">Sign in</button>
-    </form>
-</div>
 
-    
-</body>
+
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
 
@@ -251,4 +251,5 @@ a{
     }
 }
 </style>
+</body>
 </html>
