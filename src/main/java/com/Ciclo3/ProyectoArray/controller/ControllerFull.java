@@ -327,12 +327,5 @@ public class ControllerFull {
         return "/graficos/charts"; //Llamamos al HTML de los graficos
     }
 
-
-
-
-
-
-
-
-
+//se inicia la rama Release
 }
