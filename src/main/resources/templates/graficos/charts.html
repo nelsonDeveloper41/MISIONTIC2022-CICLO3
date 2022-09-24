@@ -8,7 +8,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
   <meta name="description" content="" />
   <meta name="author" content="" />
-  <title>Charts - SB Admin</title>
+  <title>GRAFICA MOVIMIENTOS TOTALES</title>
   <link href="css/styles.css" rel="stylesheet" />
   <script src="https://use.fontawesome.com/releases/v6.1.0/js/all.js" crossorigin="anonymous"></script>
 </head>
@@ -123,10 +123,10 @@
     <div id="layoutSidenav_content">
       <main>
         <div class="container-fluid px-4">
-          <h1 class="mt-4">Charts</h1>
+          <h1 class="mt-4">GRAFICA MOVIMIENTOS PARA TODAS LAS EMPRESAS</h1>
           <ol class="breadcrumb mb-4">
             <li class="breadcrumb-item"><a href="index.html">Dashboard</a></li>
-            <li class="breadcrumb-item active">Charts</li>
+            <li class="breadcrumb-item active">GRAFICA MOVIMIENTOS PARA TODAS LAS EMPRESAS</li>
           </ol>
           <div class="card mb-4">
             <div class="card-body">
@@ -139,7 +139,7 @@
           <div class="card mb-4">
             <div class="card-header">
               <i class="fas fa-chart-area me-1"></i>
-              Area Chart Example
+              GRAFICO DE LINEAS, MOVIMIENTOS DE TODAS LAS EMPRESAS
             </div>
             <div class="card-body"><canvas id="myAreaChart" width="100%" height="30"></canvas></div>
             <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>
@@ -149,7 +149,7 @@
               <div class="card mb-4">
                 <div class="card-header">
                   <i class="fas fa-chart-bar me-1"></i>
-                  Bar Chart Example
+                  GRAFICO DE BARRAS MOV. TODAS LAS EMPRESAS
                 </div>
                 <div class="card-body"><canvas id="myBarChart" width="100%" height="50"></canvas></div>
                 <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>
@@ -159,7 +159,7 @@
               <div class="card mb-4">
                 <div class="card-header">
                   <i class="fas fa-chart-pie me-1"></i>
-                  Pie Chart Example
+                  GRAF. TORTA MOV. TODAS LAS EMP.
                 </div>
                 <div class="card-body"><canvas id="myPieChart" width="100%" height="50"></canvas></div>
                 <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>
@@ -171,30 +171,34 @@
 
       <!-- ******************************************************************************** -->
       <!-- Campo para ver la suma de TODOS LOS MOVIMIENTOS FILTRADOS -->
-      <div class="row">
-        <div class="form-group col-md-12">
-          <label class="col-md-2" for="SumaMontos">Total Movimientos:</label>
-          <div class="col-md-6">
-            <p th:text="${#numbers.formatCurrency(SumaMontos)}" class="form-control" id="SumaMontos"></p>
+      <div class="container">
+        <div class="row">
+          <div class="form-group col-md-12">
+            <label class="col-md-2" for="SumaMontos">Total Movimientos:</label>
+            <div class="col-md-6">
+              <p th:text="${#numbers.formatCurrency(SumaMontos)}" class="form-control" id="SumaMontos"></p>
+            </div>
           </div>
         </div>
       </div>
-
+      
       <!-- Campo para ver si el total es de todas las empresas, por una empresa o por un empleado -->
-      <div class="row">
-        <div class="form-group col-md-12">
-          <label class="col-md-2" for="Texto">REFERENCIA:</label>
-          <div class="col-md-6">
-            <p th:text="${Texto}" class="form-control" id="Texto"></p>
+      <div class="container">
+        <div class="row">
+          <div class="form-group col-md-12">
+            <label class="col-md-2" for="Texto">REFERENCIA:</label>
+            <div class="col-md-6">
+              <p th:text="${Texto}" class="form-control" id="Texto"></p>
+            </div>
           </div>
         </div>
       </div>
       <!-- ******************************************************************************** -->
-
-
-
-
-
+      
+      
+      
+      
+      
       <footer class="py-4 bg-light mt-auto">
         <div class="container-fluid px-4">
           <div class="d-flex align-items-center justify-content-between small">
@@ -207,59 +211,90 @@
           </div>
         </div>
       </footer>
-    </div>
-  </div>
+      </div>
+      </div>
+      
+      
+      
+      
+      
+      
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+        crossorigin="anonymous"></script>
+      <script>
+        /*!
+        * Start Bootstrap - SB Admin v7.0.5 (https://startbootstrap.com/template/sb-admin)
+        * Copyright 2013-2022 Start Bootstrap
+        * Licensed under MIT (https://github.com/StartBootstrap/startbootstrap-sb-admin/blob/master/LICENSE)
+        */
+        //
+        // Scripts
+        //
 
+        window.addEventListener('DOMContentLoaded', event => {
 
+          // Toggle the side navigation
+          const sidebarToggle = document.body.querySelector('#sidebarToggle');
+          if (sidebarToggle) {
+            // Uncomment Below to persist sidebar toggle between refreshes
+            // if (localStorage.getItem('sb|sidebar-toggle') === 'true') {
+            //     document.body.classList.toggle('sb-sidenav-toggled');
+            // }
+            sidebarToggle.addEventListener('click', event => {
+              event.preventDefault();
+              document.body.classList.toggle('sb-sidenav-toggled');
+              localStorage.setItem('sb|sidebar-toggle', document.body.classList.contains('sb-sidenav-toggled'));
+            });
+          }
 
-
-
-
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
-    crossorigin="anonymous"></script>
-  <script>
-    /*!
-    * Start Bootstrap - SB Admin v7.0.5 (https://startbootstrap.com/template/sb-admin)
-    * Copyright 2013-2022 Start Bootstrap
-    * Licensed under MIT (https://github.com/StartBootstrap/startbootstrap-sb-admin/blob/master/LICENSE)
-    */
-    //
-    // Scripts
-    //
-
-    window.addEventListener('DOMContentLoaded', event => {
-
-      // Toggle the side navigation
-      const sidebarToggle = document.body.querySelector('#sidebarToggle');
-      if (sidebarToggle) {
-        // Uncomment Below to persist sidebar toggle between refreshes
-        // if (localStorage.getItem('sb|sidebar-toggle') === 'true') {
-        //     document.body.classList.toggle('sb-sidenav-toggled');
-        // }
-        sidebarToggle.addEventListener('click', event => {
-          event.preventDefault();
-          document.body.classList.toggle('sb-sidenav-toggled');
-          localStorage.setItem('sb|sidebar-toggle', document.body.classList.contains('sb-sidenav-toggled'));
         });
-      }
 
-    });
+      </script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js" crossorigin="anonymous"></script>
+      
+      <!--GRAFICO DE LINEAS Y AREA-------------------------------------------------------------->
+      <!--GRAFICO DE LINEAS Y AREA-------------------------------------------------------------->
+      <script th:inline="javascript">
+        // Set new default font family and font color to mimic Bootstrap's default styling
+        Chart.defaults.global.defaultFontFamily = '-apple-system,system-ui,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif';
+        Chart.defaults.global.defaultFontColor = '#292b2c';
+        var data = [[${ movlist }]]; //objeto JSON que viene del controlador
+        //console.log(data)  todo el JSON que viene desde el controlador
 
-  </script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js" crossorigin="anonymous"></script>
-  <script>
-    // Set new default font family and font color to mimic Bootstrap's default styling
-    Chart.defaults.global.defaultFontFamily = '-apple-system,system-ui,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif';
-    Chart.defaults.global.defaultFontColor = '#292b2c';
+          //////////////////////////*********************************************************
+          //https://es.stackoverflow.com/questions/425036/como-sumar-valores-de-un-json-pero-cuando-cumplan-un-criterio-en-javascript 
+          const nombres1 = data.map((x) => x.usuario.empresa.nombre);
+          // He cambiado el nombre de la variable nombre a arrayNombres, mucho más indicativo de su contenido!
+          const arrayNombres1 = [...new Set(nombres1)];
+          // Se declara un arrayVentas vacío, aquí almacenaremos las ventas de cada uno
+          const arrayVentas1 = [];
+          arrayNombres1.forEach((nom) => {
+            const filtro = data.filter((x) => x.usuario.empresa.nombre == nom);
+            const ventas = filtro.reduce((acc, valor) => acc + valor.monto, 0);
+            // Hasta aquí es lo mismo que tenías tu!
+            // Simplemente en vez de imprimirlo en consola, lo meto al array de ventas
+            arrayVentas1.push(ventas);
+          });
+          // Finalmente imprimimos en consola para verificar que todo ha ido bien
+          console.log(arrayNombres1);
+          console.log(arrayVentas1);
+          //otra opcion de consulta para otro caso
+          //https://es.stackoverflow.com/questions/420355/suma-de-valores-de-una-misma-clave-en-javascript
+
+     //////////////////////////////////////////////////***************************  
+      
+        var valormax = Math.max(...arrayVentas1)
+        //console.log(valormax)  //ES PARA EL TOPE MAXIMO DE LA GRAF.
+
 
     // Area Chart Example
     var ctx = document.getElementById("myAreaChart");
     var myLineChart = new Chart(ctx, {
       type: 'line',
       data: {
-        labels: ["Mar 1", "Mar 2", "Mar 3", "Mar 4", "Mar 5", "Mar 6", "Mar 7", "Mar 8", "Mar 9", "Mar 10", "Mar 11", "Mar 12", "Mar 13"],
+        labels: arrayNombres1,  ////EJE DE LA X (ABSCISAS)
         datasets: [{
-          label: "Sessions",
+          label: "EMPRESAS",
           lineTension: 0.3,
           backgroundColor: "rgba(2,117,216,0.2)",
           borderColor: "rgba(2,117,216,1)",
@@ -270,7 +305,7 @@
           pointHoverBackgroundColor: "rgba(2,117,216,1)",
           pointHitRadius: 50,
           pointBorderWidth: 2,
-          data: [10000, 30162, 26263, 18394, 18287, 28682, 31274, 33259, 25849, 24159, 32651, 31984, 38451],
+          data: arrayVentas1,   /////EJE DE LA Y (ORDENADAS)
         }],
       },
       options: {
@@ -289,7 +324,7 @@
           yAxes: [{
             ticks: {
               min: 0,
-              max: 40000,
+              max: valormax,  //////maximo valor de la grafica  maxValor
               maxTicksLimit: 5
             },
             gridLines: {
@@ -304,22 +339,53 @@
     });
 
   </script>
-  <script>
+
+  <!--GRAFICO DE BARRAS-------------------------------------------------------------->
+  <!--GRAFICO DE BARRAS-------------------------------------------------------------->
+  <script th:inline="javascript">
     // Set new default font family and font color to mimic Bootstrap's default styling
     Chart.defaults.global.defaultFontFamily = '-apple-system,system-ui,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif';
     Chart.defaults.global.defaultFontColor = '#292b2c';
+    var data= [[${movlist}]]; //objeto que viene del controlador
+    //console.log(data)  todo el JSON que viene desde el controlador
+
+          //////////////////////////*********************************************************
+          //https://es.stackoverflow.com/questions/425036/como-sumar-valores-de-un-json-pero-cuando-cumplan-un-criterio-en-javascript 
+          const nombres2 = data.map((x) => x.usuario.empresa.nombre);
+          // He cambiado el nombre de la variable nombre a arrayNombres, mucho más indicativo de su contenido!
+          const arrayNombres2 = [...new Set(nombres2)];
+          // Se declara un arrayVentas vacío, aquí almacenaremos las ventas de cada uno
+          const arrayVentas2 = [];
+          arrayNombres2.forEach((nom) => {
+            const filtro = data.filter((x) => x.usuario.empresa.nombre == nom);
+            const ventas = filtro.reduce((acc, valor) => acc + valor.monto, 0);
+            // Hasta aquí es lo mismo que tenías tu!
+            // Simplemente en vez de imprimirlo en consola, lo meto al array de ventas
+            arrayVentas2.push(ventas);
+          });
+          // Finalmente imprimimos en consola para verificar que todo ha ido bien
+          console.log(arrayNombres2);
+          console.log(arrayVentas2);
+          //otra opcion de consulta para otro caso
+          //https://es.stackoverflow.com/questions/420355/suma-de-valores-de-una-misma-clave-en-javascript
+
+     //////////////////////////////////////////////////***************************  
+      
+        var valormax = Math.max(...arrayVentas2)
+        //console.log(valormax)  //ES PARA EL TOPE MAXIMO DE LA GRAF.
+  
 
     // Bar Chart Example
     var ctx = document.getElementById("myBarChart");
     var myLineChart = new Chart(ctx, {
       type: 'bar',
       data: {
-        labels: ["January", "February", "March", "April", "May", "June"],
+        labels: arrayNombres2,  /////EJE DE LA X (ABSCISAS)
         datasets: [{
           label: "Revenue",
           backgroundColor: "rgba(2,117,216,1)",
           borderColor: "rgba(2,117,216,1)",
-          data: [4215, 5312, 6251, 7841, 9821, 14984],
+          data: arrayVentas2,  /////EJE DE LA Y (ORDENADAS)
         }],
       },
       options: {
@@ -338,7 +404,7 @@
           yAxes: [{
             ticks: {
               min: 0,
-              max: 15000,
+              max: valormax, ///maximo de la grafica maxValor
               maxTicksLimit: 5
             },
             gridLines: {
@@ -353,19 +419,51 @@
     });
 
   </script>
-  <script>
+
+
+  <!--GRAFICO DE TORTA-------------------------------------------------------------->
+  <!--GRAFICO DE TORTA-------------------------------------------------------------->
+  <script th:inline="javascript">
     // Set new default font family and font color to mimic Bootstrap's default styling
     Chart.defaults.global.defaultFontFamily = '-apple-system,system-ui,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif';
     Chart.defaults.global.defaultFontColor = '#292b2c';
+    var data= [[${movlist}]]; //objeto que viene del controlador
+    //console.log(data)  todo el JSON que viene desde el controlador
+
+          //////////////////////////*********************************************************
+          //https://es.stackoverflow.com/questions/425036/como-sumar-valores-de-un-json-pero-cuando-cumplan-un-criterio-en-javascript 
+          const nombres3 = data.map((x) => x.usuario.empresa.nombre);
+          // He cambiado el nombre de la variable nombre a arrayNombres, mucho más indicativo de su contenido!
+          const arrayNombres3 = [...new Set(nombres3)];
+          // Se declara un arrayVentas vacío, aquí almacenaremos las ventas de cada uno
+          const arrayVentas3 = [];
+          arrayNombres3.forEach((nom) => {
+            const filtro = data.filter((x) => x.usuario.empresa.nombre == nom);
+            const ventas = filtro.reduce((acc, valor) => acc + valor.monto, 0);
+            // Hasta aquí es lo mismo que tenías tu!
+            // Simplemente en vez de imprimirlo en consola, lo meto al array de ventas
+            arrayVentas3.push(ventas);
+          });
+          // Finalmente imprimimos en consola para verificar que todo ha ido bien
+          console.log(arrayNombres3);
+          console.log(arrayVentas3);
+          //otra opcion de consulta para otro caso
+          //https://es.stackoverflow.com/questions/420355/suma-de-valores-de-una-misma-clave-en-javascript
+
+     //////////////////////////////////////////////////***************************  
+      
+        var valormax = Math.max(...arrayVentas3)
+        //console.log(valormax)  //ES PARA EL TOPE MAXIMO DE LA GRAF.
+
 
     // Pie Chart Example
     var ctx = document.getElementById("myPieChart");
     var myPieChart = new Chart(ctx, {
       type: 'pie',
       data: {
-        labels: ["Blue", "Red", "Yellow", "Green"],
+        labels: arrayNombres3,
         datasets: [{
-          data: [12.21, 15.58, 11.25, 8.32],
+          data: arrayVentas3,
           backgroundColor: ['#007bff', '#dc3545', '#ffc107', '#28a745'],
         }],
       },

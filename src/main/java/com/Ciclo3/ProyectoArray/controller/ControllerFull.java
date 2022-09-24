@@ -327,4 +327,12 @@ public class ControllerFull {
         return "/graficos/charts"; //Llamamos al HTML de los graficos
     }
 
+
+
+
+
+
+
+
+
 }
