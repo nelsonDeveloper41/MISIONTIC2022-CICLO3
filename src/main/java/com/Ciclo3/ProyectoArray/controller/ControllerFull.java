@@ -272,8 +272,8 @@ public class ControllerFull {
         return "verMovimientos"; //Llamamos al HTML
     }
 
-    //METODOS DE SEGURIDAD
-
+    //METODOS DE SEGURIDAD****************************************************************
+    //**********************************************************************************
 
 
     //Controlador que me lleva al template de No autorizado
@@ -307,6 +307,24 @@ public class ControllerFull {
     @RequestMapping(value="/logoutPage")
     public String salirdeSesion(){
         return "logoutPageView";
+    }
+
+ /*
+ ***********************************************************************
+ * ********************************************************************
+ * *******************************************************************
+ * CONTROLADOR GRAFICAR MOVIMIENTOS
+  */
+
+    @RequestMapping ("/GrafMovEmpresas")
+    public String grafMovimientos(Model model){
+        List<MovimientoDinero> listaMovimientos=movimientosService.getAllMovimientos();
+        model.addAttribute("movlist",listaMovimientos);
+        Long sumaMonto=movimientosService.obtenerSumaMontos();
+        model.addAttribute("SumaMontos",sumaMonto);//Mandamos la suma de todos los montos a la plantilla
+        String texto="TOTAL DE TODAS LAS EMPRESAS";
+        model.addAttribute("Texto",texto);
+        return "/graficos/charts"; //Llamamos al HTML de los graficos
     }
 
 }
