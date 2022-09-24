@@ -39,7 +39,7 @@
           <li>
             <hr class="dropdown-divider" />
           </li>
-          <li><a class="dropdown-item" href="#!">Logout</a></li>
+          <li><a class="dropdown-item" th:href="@{/logoutPage}">Logout</a></li>
         </ul>
       </li>
     </ul>
@@ -108,7 +108,7 @@
               <div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>
               Charts
             </a>
-            <a class="nav-link" href="tables.html">
+            <a class="nav-link" th:href="@{/VerMovimientos}">
               <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
               Tables
             </a>
@@ -165,35 +165,50 @@
                 <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>
               </div>
             </div>
+
+            <div class="col-lg-6">
+              <div class="card mb-4">
+                <div class="card-header">
+                  <i class="fas fa-chart-pie me-1"></i>
+                  SUMA TOTAL TODAS LAS EMPRESAS
+                </div>
+
+
+                <div class="card-body">
+                    <!-- ******************************************************************************** -->
+                    <!-- Campo para ver la suma de TODOS LOS MOVIMIENTOS FILTRADOS -->
+                    <div class="container">
+                      <div class="row">
+                        <div class="form-group col-md-12">
+                          <label class="col-md-6" for="SumaMontos">Total Movimientos:</label>
+                          <div class="col-md-10">
+                            <p th:text="${#numbers.formatCurrency(SumaMontos)}" class="form-control" id="SumaMontos"></p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <!-- Campo para ver si el total es de todas las empresas, por una empresa o por un empleado -->
+                    <div class="container">
+                      <div class="row">
+                        <div class="form-group col-md-12">
+                          <label class="col-md-6" for="Texto">REFERENCIA:</label>
+                          <div class="col-md-10">
+                            <p th:text="${Texto}" class="form-control" id="Texto"></p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <!-- ******************************************************************************** -->
+                <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>
+              </div>
+            </div>
           </div>
+        </div>
         </div>
       </main>
 
-      <!-- ******************************************************************************** -->
-      <!-- Campo para ver la suma de TODOS LOS MOVIMIENTOS FILTRADOS -->
-      <div class="container">
-        <div class="row">
-          <div class="form-group col-md-12">
-            <label class="col-md-2" for="SumaMontos">Total Movimientos:</label>
-            <div class="col-md-6">
-              <p th:text="${#numbers.formatCurrency(SumaMontos)}" class="form-control" id="SumaMontos"></p>
-            </div>
-          </div>
-        </div>
-      </div>
-      
-      <!-- Campo para ver si el total es de todas las empresas, por una empresa o por un empleado -->
-      <div class="container">
-        <div class="row">
-          <div class="form-group col-md-12">
-            <label class="col-md-2" for="Texto">REFERENCIA:</label>
-            <div class="col-md-6">
-              <p th:text="${Texto}" class="form-control" id="Texto"></p>
-            </div>
-          </div>
-        </div>
-      </div>
-      <!-- ******************************************************************************** -->
+
       
       
       

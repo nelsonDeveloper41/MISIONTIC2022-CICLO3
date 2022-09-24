@@ -50,6 +50,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/EditarMovimiento/**").hasRole("ADMIN")
                 .antMatchers("/ActualizarMovimiento/**").hasRole("ADMIN")
                 .antMatchers("/EliminarMovimiento/**").hasRole("ADMIN")
+                .antMatchers("/GrafMovEmpresas/**").hasRole("ADMIN")
 
 
                 .antMatchers("/Empresa/**").hasRole("ADMIN")
