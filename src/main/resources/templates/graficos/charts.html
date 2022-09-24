@@ -274,9 +274,10 @@
         Chart.defaults.global.defaultFontFamily = '-apple-system,system-ui,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif';
         Chart.defaults.global.defaultFontColor = '#292b2c';
         var data = [[${ movlist }]]; //objeto JSON que viene del controlador
-        //console.log(data)  todo el JSON que viene desde el controlador
+        console.log(data)  //todo el JSON que viene desde el controlador
 
           //////////////////////////*********************************************************
+          ///con el siguiente codigo filtramos nombres repetidos y sumamos sus valores
           //https://es.stackoverflow.com/questions/425036/como-sumar-valores-de-un-json-pero-cuando-cumplan-un-criterio-en-javascript 
           const nombres1 = data.map((x) => x.usuario.empresa.nombre);
           // He cambiado el nombre de la variable nombre a arrayNombres, mucho más indicativo de su contenido!
@@ -298,9 +299,14 @@
 
      //////////////////////////////////////////////////***************************  
       
-        var valormax = Math.max(...arrayVentas1)
+        var valormax = Math.max(...arrayVentas1)//valor maximo
+        var valormin = Math.min(...arrayVentas1)//valor minimo
         //console.log(valormax)  //ES PARA EL TOPE MAXIMO DE LA GRAF.
-
+          if (valormin >= 0) {
+              var lineamin = 0;
+          } else {
+            var lineamin = valormin;	
+          }
 
     // Area Chart Example
     var ctx = document.getElementById("myAreaChart");
@@ -338,7 +344,7 @@
           }],
           yAxes: [{
             ticks: {
-              min: 0,
+              min: lineamin, ///minimo de la grafica maxValor
               max: valormax,  //////maximo valor de la grafica  maxValor
               maxTicksLimit: 5
             },
@@ -379,15 +385,21 @@
             arrayVentas2.push(ventas);
           });
           // Finalmente imprimimos en consola para verificar que todo ha ido bien
-          console.log(arrayNombres2);
-          console.log(arrayVentas2);
+          //console.log(arrayNombres2);
+          //console.log(arrayVentas2);
           //otra opcion de consulta para otro caso
           //https://es.stackoverflow.com/questions/420355/suma-de-valores-de-una-misma-clave-en-javascript
 
      //////////////////////////////////////////////////***************************  
       
         var valormax = Math.max(...arrayVentas2)
+        var valormin = Math.min(...arrayVentas1)//valor minimo
         //console.log(valormax)  //ES PARA EL TOPE MAXIMO DE LA GRAF.
+        if (valormin >= 0) {
+              var lineamin = 0;
+          } else {
+            var lineamin = valormin;	
+          }
   
 
     // Bar Chart Example
@@ -418,7 +430,7 @@
           }],
           yAxes: [{
             ticks: {
-              min: 0,
+              min: lineamin, ///minimo de la grafica maxValor
               max: valormax, ///maximo de la grafica maxValor
               maxTicksLimit: 5
             },
@@ -460,8 +472,8 @@
             arrayVentas3.push(ventas);
           });
           // Finalmente imprimimos en consola para verificar que todo ha ido bien
-          console.log(arrayNombres3);
-          console.log(arrayVentas3);
+          //console.log(arrayNombres3);
+          //console.log(arrayVentas3);
           //otra opcion de consulta para otro caso
           //https://es.stackoverflow.com/questions/420355/suma-de-valores-de-una-misma-clave-en-javascript
 
