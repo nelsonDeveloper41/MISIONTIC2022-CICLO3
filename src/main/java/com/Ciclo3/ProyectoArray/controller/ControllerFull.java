@@ -324,7 +324,7 @@ public class ControllerFull {
         model.addAttribute("SumaMontos",sumaMonto);//Mandamos la suma de todos los montos a la plantilla
         String texto="TOTAL DE TODAS LAS EMPRESAS";
         model.addAttribute("Texto",texto);
-        return "/graficos/charts"; //Llamamos al HTML de los graficos
+        return "charts"; //Llamamos al HTML de los graficos
     }
 
 //se inicia la rama Release
